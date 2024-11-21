@@ -1,0 +1,30 @@
+trigger:
+  branches:
+    include:
+      - main
+pool:
+  name: 'Default'
+
+jobs:
+- job: DeployNM
+  displayName: 'Deploy Axway anm using Bicep'
+  steps:
+
+    - task: AzureCLI@2
+      displayName: 'Deploy anm with Bicep'
+      inputs:
+        azureSubscription: 'axwaymanishdepops1'
+        scriptType: 'ps'
+        scriptLocation: 'inlineScript'
+        inlineScript: |
+          # Define parameters
+          $resourceGroupName = 'RG-mavishnoi'
+          $location = 'westeurope'
+          $initialCassandraAdminPassword = 'Test123'
+          $cassandraVersion = '3.11'
+          $subscriptionID = '9436480f-c708-4e0f-aba3-3d5af128e84a'
+          $vnetID = '35571b29-1de1-4e90-b456-fe2f9c20ecbd'
+          $delegatedManagementSubnetId='/subscriptions/$subscriptionID/resourceGroups/$resourceGroupName/providers/Microsoft.Network/virtualNetworks/$vnetID'
+          az role assignment create --assignee a232010e-820c-4083-83bb-3ace5fc29d0b --role 4d97b98b-1d4f-4787-a291-c67834d212e7 --scope /subscriptions/$subscriptionID/resourceGroups/$resourceGroupName/providers/Microsoft.Network/virtualNetworks/$vnetID
+          az managed-cassandra cluster create --cluster-name TEST123 --resource-group $resourceGroupName --location $location --delegated-management-subnet-id $delegatedManagementSubnetId --initial-cassandra-admin-password $initialCassandraAdminPassword --cassandra-version $cassandraVersion --debug
+      
