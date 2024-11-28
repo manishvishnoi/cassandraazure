@@ -21,7 +21,7 @@ jobs:
           $resourceGroupName = 'RG-mavishnoi'
           $location = 'westeurope'
           $initialCassandraAdminPassword = 'Test123'
-          $cassandraVersion = '3.11'
+          $cassandraVersion = '4.0'
           $subscriptionID = '9436480f-c708-4e0f-aba3-3d5af128e84a'
           $vnetID = 'Test'
           $delegatedManagementSubnetId='/subscriptions/$subscriptionID/resourceGroups/$resourceGroupName/providers/Microsoft.Network/virtualNetworks/$vnetID'
