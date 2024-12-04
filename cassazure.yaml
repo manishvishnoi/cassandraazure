@@ -27,7 +27,7 @@ jobs:
           $subnetName= 'Test111'
           $delegatedManagementSubnetId='/subscriptions/9436480f-c708-4e0f-aba3-3d5af128e84a/resourceGroups/RG-mavishnoi/providers/Microsoft.Network/virtualNetworks/Test111/subnets/Test111'
           az account set -s $subscriptionID
-          az config set auto-upgrade.enable=yes
+          #az config set auto-upgrade.enable=yes
           #az network vnet create -n $vnetID -l $location -g $resourceGroupName --subnet-name $subnetName
           #az role assignment create --assignee a232010e-820c-4083-83bb-3ace5fc29d0b --role 4d97b98b-1d4f-4787-a291-c67834d212e7 --scope /subscriptions/$subscriptionID/resourceGroups/$resourceGroupName/providers/Microsoft.Network/virtualNetworks/$vnetID
           az managed-cassandra cluster create --cluster-name TEST111 --resource-group $resourceGroupName --location $location --delegated-management-subnet-id $delegatedManagementSubnetId --initial-cassandra-admin-password $initialCassandraAdminPassword --cassandra-version $cassandraVersion --debug
