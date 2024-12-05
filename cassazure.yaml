@@ -20,16 +20,16 @@ jobs:
           # Define parameters TEST
           $resourceGroupName = 'RG-mavishnoi'
           $location = 'swedencentral'
-          $initialCassandraAdminPassword = 'Test333'
+          $initialCassandraAdminPassword = 'Test444'
           $cassandraVersion = '4.0'
           $subscriptionID = '9436480f-c708-4e0f-aba3-3d5af128e84a'
-          $vnetID = 'Test333'
-          $subnetName= 'Test333'
-          $delegatedManagementSubnetId='/subscriptions/9436480f-c708-4e0f-aba3-3d5af128e84a/resourceGroups/RG-mavishnoi/providers/Microsoft.Network/virtualNetworks/Test222/subnets/Test222'
+          $vnetID = 'Test444'
+          $subnetName= 'Test444'
+          $delegatedManagementSubnetId='/subscriptions/9436480f-c708-4e0f-aba3-3d5af128e84a/resourceGroups/RG-mavishnoi/providers/Microsoft.Network/virtualNetworks/Test444/subnets/Test444'
           az account set -s $subscriptionID
           #az config set auto-upgrade.enable=yes
           az network vnet create -n $vnetID -l $location -g $resourceGroupName --subnet-name $subnetName
           #az role assignment create --assignee a232010e-820c-4083-83bb-3ace5fc29d0b --role 4d97b98b-1d4f-4787-a291-c67834d212e7 --scope /subscriptions/$subscriptionID/resourceGroups/$resourceGroupName/providers/Microsoft.Network/virtualNetworks/$vnetID
-          az managed-cassandra cluster create --cluster-name TEST333 --resource-group $resourceGroupName --location $location --delegated-management-subnet-id $delegatedManagementSubnetId --initial-cassandra-admin-password $initialCassandraAdminPassword --cassandra-version $cassandraVersion --debug
-          az managed-cassandra datacenter create --resource-group RG-mavishnoi --cluster-name TEST333 --data-center-name dc1 --data-center-location swedencentral --delegated-subnet-id '/subscriptions/9436480f-c708-4e0f-aba3-3d5af128e84a/resourceGroups/RG-mavishnoi/providers/Microsoft.Network/virtualNetworks/Test333/subnets/Test333' --node-count 3 --sku Standard_D8s_v4 --disk-capacity 1 --availability-zone false
+          az managed-cassandra cluster create --cluster-name TEST444 --resource-group $resourceGroupName --location $location --delegated-management-subnet-id $delegatedManagementSubnetId --initial-cassandra-admin-password $initialCassandraAdminPassword --cassandra-version $cassandraVersion --debug
+          az managed-cassandra datacenter create --resource-group RG-mavishnoi --cluster-name TEST444 --data-center-name dc1 --data-center-location swedencentral --delegated-subnet-id '/subscriptions/9436480f-c708-4e0f-aba3-3d5af128e84a/resourceGroups/RG-mavishnoi/providers/Microsoft.Network/virtualNetworks/Test444/subnets/Test444' --node-count 3 --sku Standard_D8s_v4 --disk-capacity 1 --availability-zone false
       
